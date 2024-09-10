@@ -1,4 +1,4 @@
-module code.alipay.com/wangzunjiao.wzj/go-sdk
+module github.com/wangzunjiao.wzj/go-sdk
 
 go 1.22.5
 

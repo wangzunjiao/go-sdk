@@ -1,9 +1,9 @@
 package subscription
 
 import (
-	"code.alipay.com/wangzunjiao.wzj/go-sdk/com/alipay/api/model"
-	"code.alipay.com/wangzunjiao.wzj/go-sdk/com/alipay/api/request"
-	responseSubscription "code.alipay.com/wangzunjiao.wzj/go-sdk/com/alipay/api/response/subscription"
+	"github.com/wangzunjiao.wzj/go-sdk/com/alipay/api/model"
+	"github.com/wangzunjiao.wzj/go-sdk/com/alipay/api/request"
+	responseSubscription "github.com/wangzunjiao.wzj/go-sdk/com/alipay/api/response/subscription"
 )
 
 type AlipaySubscriptionCancelRequest struct {

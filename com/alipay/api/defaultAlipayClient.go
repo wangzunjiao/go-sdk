@@ -2,8 +2,6 @@ package defaultAlipayClient
 
 import (
 	"bytes"
-	"code.alipay.com/wangzunjiao.wzj/go-sdk/com/alipay/api/exception"
-	"code.alipay.com/wangzunjiao.wzj/go-sdk/com/alipay/api/request"
 	"crypto"
 	"crypto/rand"
 	"crypto/rsa"
@@ -13,6 +11,8 @@ import (
 	"encoding/json"
 	"encoding/pem"
 	"fmt"
+	"github.com/wangzunjiao.wzj/go-sdk/com/alipay/api/exception"
+	"github.com/wangzunjiao.wzj/go-sdk/com/alipay/api/request"
 	"io/ioutil"
 	"log"
 	"net/http"

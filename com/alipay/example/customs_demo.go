@@ -1,12 +1,12 @@
 package main
 
 import (
-	defaultAlipayClient "code.alipay.com/wangzunjiao.wzj/go-sdk/com/alipay/api"
-	"code.alipay.com/wangzunjiao.wzj/go-sdk/com/alipay/api/model"
-	"code.alipay.com/wangzunjiao.wzj/go-sdk/com/alipay/api/request/customs"
-	responseCustoms "code.alipay.com/wangzunjiao.wzj/go-sdk/com/alipay/api/response/customs"
 	"fmt"
 	"github.com/google/uuid"
+	defaultAlipayClient "github.com/wangzunjiao.wzj/go-sdk/com/alipay/api"
+	"github.com/wangzunjiao.wzj/go-sdk/com/alipay/api/model"
+	"github.com/wangzunjiao.wzj/go-sdk/com/alipay/api/request/customs"
+	responseCustoms "github.com/wangzunjiao.wzj/go-sdk/com/alipay/api/response/customs"
 )
 
 func main() {
