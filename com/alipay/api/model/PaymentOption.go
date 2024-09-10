@@ -6,7 +6,7 @@ type PaymentOption struct {
 	PaymentMethodRegion   []string                   `json:"paymentMethodRegion,omitempty"`
 	Enabled               bool                       `json:"enabled,omitempty"`
 	Preferred             bool                       `json:"preferred,omitempty"`
-	DisableReason         string                     `json:"disableReason,omitempty"`
+	DisableReason         DisableReasonType          `json:"disableReason,omitempty"`
 	AmountLimitInfoMap    map[string]AmountLimitInfo `json:"amountLimitInfoMap,omitempty"`
 	SupportedCurrencies   []string                   `json:"supportedCurrencies,omitempty"`
 	PaymentOptionDetail   PaymentOptionDetail        `json:"paymentOptionDetail,omitempty"`

@@ -2,7 +2,7 @@ package model
 
 type CardInfo struct {
 	CardNo              string        `json:"cardNo,omitempty"`
-	CardBrand           string        `json:"cardBrand,omitempty"`
+	CardBrand           CardBrand     `json:"cardBrand,omitempty"`
 	CardToken           string        `json:"cardToken,omitempty"`
 	IssuingCountry      string        `json:"issuingCountry,omitempty"`
 	Funding             string        `json:"funding,omitempty"`

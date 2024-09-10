@@ -6,40 +6,37 @@ import (
 	"code.alipay.com/wangzunjiao.wzj/go-sdk/com/alipay/api/request/pay"
 	responsePay "code.alipay.com/wangzunjiao.wzj/go-sdk/com/alipay/api/response/pay"
 	"fmt"
+	"github.com/google/uuid"
 )
 
-const alipay_merchantPrivateKey = ""
-const alipay_alipayPublicKey = ""
-const alipay_clientid = ""
-const alipay_getwayurl = ""
-
 func main() {
+	const alipayGatewayUrl = ""
+	const alipayClientId = ""
+	const alipayMerchantPrivateKey = ""
+	const alipayAlipayPublicKey = ""
 
 	client := defaultAlipayClient.NewDefaultAlipayClient(
-		alipay_getwayurl,
-		alipay_clientid,
-		alipay_merchantPrivateKey,
-		alipay_alipayPublicKey)
+		alipayGatewayUrl,
+		alipayClientId,
+		alipayMerchantPrivateKey,
+		alipayAlipayPublicKey)
 
-	AliPay(client)
-
+	doPay(client)
+	//payQuery("1e6d724d-da95-407b-9802-6f2217c301d6", client)
 	//refund("202408151940108001001886C0209996792", client)
-
 	//queryRefund("ad53716a-81-4c4c-b151-216c5225e", client)
+	//cancel("ad53716a-81-4c4c-b51-20916c5225e", client)
 	//consult(client)
-	//cancel("ad53716a-81-4c4c-b51-20916c5225e", client) // ad53716a-81-4c4c-b51-20916c5225e 202408221940108001001888E0210714455
-
 	//createSession(client)
 }
 
-func AliPay(body *defaultAlipayClient.DefaultAlipayClient) {
-
+func doPay(body *defaultAlipayClient.DefaultAlipayClient) {
 	payRequest, request := pay.NewAlipayPayRequest()
 
-	request.PaymentRequestId = "ad716a-81-4c4c-b51-20916c5225e"
+	request.PaymentRequestId = uuid.NewString()
 	order := &model.Order{}
 	order.OrderDescription = "example order"
-	order.ReferenceOrderId = "28947397358748"
+	order.ReferenceOrderId = uuid.NewString()
 	order.OrderAmount = model.NewAmount("100", "HKD")
 	merchant := &model.Merchant{}
 	merchant.ReferenceMerchantId = "1238rye8yr8erwer"
@@ -55,7 +52,7 @@ func AliPay(body *defaultAlipayClient.DefaultAlipayClient) {
 	request.PaymentNotifyUrl = "https://www.alipay.com"
 	request.PaymentRedirectUrl = "https://www.alipay.com"
 
-	request.PaymentMethod = &model.PaymentMethod{PaymentMethodType: model.ALIPAY_HK, PaymentMethodId: "1234567890"}
+	request.PaymentMethod = &model.PaymentMethod{PaymentMethodType: model.ALIPAY_HK}
 
 	request.ProductCode = model.CASHIER_PAYMENT
 
@@ -69,7 +66,7 @@ func AliPay(body *defaultAlipayClient.DefaultAlipayClient) {
 	fmt.Println("response: ", response)
 }
 
-func queryPay(paymentRequestId string, body *defaultAlipayClient.DefaultAlipayClient) {
+func payQuery(paymentRequestId string, body *defaultAlipayClient.DefaultAlipayClient) {
 	queryRequest := pay.AlipayPayQueryRequest{}
 	queryRequest.PaymentRequestId = paymentRequestId
 	request := queryRequest.NewRequest()
@@ -86,7 +83,7 @@ func queryPay(paymentRequestId string, body *defaultAlipayClient.DefaultAlipayCl
 
 func refund(paymentId string, client *defaultAlipayClient.DefaultAlipayClient) {
 	refundRequest := pay.AlipayRefundRequest{}
-	refundRequest.RefundRequestId = "ad53716a-81-4c4c-b151-216c5225e"
+	refundRequest.RefundRequestId = uuid.NewString()
 	refundRequest.PaymentId = paymentId
 	refundRequest.RefundAmount = model.NewAmount("100", "HKD")
 	refundRequest.RefundReason = "example refund"
@@ -161,7 +158,7 @@ func cancel(paymentRequestId string, client *defaultAlipayClient.DefaultAlipayCl
 
 func createSession(client *defaultAlipayClient.DefaultAlipayClient) {
 	request, createSessionRequest := pay.NewAlipayPaymentSessionRequest()
-	createSessionRequest.PaymentRequestId = "ad53716a-81-4c4c-b151-216c5225e"
+	createSessionRequest.PaymentRequestId = uuid.NewString()
 	createSessionRequest.Order = &model.Order{
 		OrderDescription: "example order",
 		ReferenceOrderId: "289473927358748",

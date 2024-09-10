@@ -7,9 +7,9 @@ import (
 )
 
 type AlipaySubscriptionCancelRequest struct {
-	SubscriptionId        string `json:"subscriptionId,omitempty"`
-	SubscriptionRequestId string `json:"subscriptionRequestId,omitempty"`
-	CancellationType      string `json:"cancellationType,omitempty"`
+	SubscriptionId        string                 `json:"subscriptionId,omitempty"`
+	SubscriptionRequestId string                 `json:"subscriptionRequestId,omitempty"`
+	CancellationType      model.CancellationType `json:"cancellationType,omitempty"`
 }
 
 func (alipaySubscriptionCancelRequest *AlipaySubscriptionCancelRequest) NewRequest() *request.AlipayRequest {

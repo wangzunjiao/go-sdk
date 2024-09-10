@@ -6,25 +6,30 @@ import (
 	"code.alipay.com/wangzunjiao.wzj/go-sdk/com/alipay/api/request/customs"
 	responseCustoms "code.alipay.com/wangzunjiao.wzj/go-sdk/com/alipay/api/response/customs"
 	"fmt"
+	"github.com/google/uuid"
 )
 
 func main() {
+	const alipayGatewayUrl = ""
+	const alipayClientId = ""
+	const alipayMerchantPrivateKey = ""
+	const alipayAlipayPublicKey = ""
 
 	client := defaultAlipayClient.NewDefaultAlipayClient(
-		alipay_getwayurl,
-		alipay_clientid,
-		alipay_merchantPrivateKey,
-		alipay_alipayPublicKey)
-	//declares("202408221940108001001887E0207467163", client)
-	inquiryDeclaration([]string{""}, client)
+		alipayGatewayUrl,
+		alipayClientId,
+		alipayMerchantPrivateKey,
+		alipayAlipayPublicKey)
+	declare("202408221940108001001887E0207467163", client)
+	//inquiryDeclaration([]string{""}, client)
 
 }
 
-func declares(paymentId string, client *defaultAlipayClient.DefaultAlipayClient) {
+func declare(paymentId string, client *defaultAlipayClient.DefaultAlipayClient) {
 	request, customsDeclareRequest := customs.NewAlipayCustomsDeclareRequest()
 	customsDeclareRequest.PaymentId = paymentId
-	customsDeclareRequest.DeclarationRequestId = "12124324324235235"
-	customsDeclareRequest.DeclarationAmount = &model.Amount{"CNY", "1000"}
+	customsDeclareRequest.DeclarationRequestId = uuid.NewString()
+	customsDeclareRequest.DeclarationAmount = &model.Amount{Value: "CNY", Currency: "1000"}
 	customsDeclareRequest.MerchantCustomsInfo = &model.MerchantCustomsInfo{
 		MerchantCustomsName: "merchantCustomsName",
 		MerchantCustomsCode: "merchantCustomsCode",

@@ -63,7 +63,7 @@ func (alipayClient *DefaultAlipayClient) httpDo(url, method string, params, head
 
 	//自定义cient
 	client := &http.Client{
-		Timeout: 6 * time.Second, // 超时时间：5秒
+		Timeout: 5 * time.Second, // 超时时间：5秒
 	}
 	//http.post等方法只是在NewRequest上又封装来了一层而已
 	req, err := http.NewRequest(method, url, bytes.NewBuffer(data))

@@ -6,26 +6,30 @@ import (
 	"code.alipay.com/wangzunjiao.wzj/go-sdk/com/alipay/api/request/auth"
 	responseAuth "code.alipay.com/wangzunjiao.wzj/go-sdk/com/alipay/api/response/auth"
 	"fmt"
+	"github.com/google/uuid"
 )
 
 func main() {
+	const alipayGatewayUrl = ""
+	const alipayClientId = ""
+	const alipayMerchantPrivateKey = ""
+	const alipayAlipayPublicKey = ""
 
 	client := defaultAlipayClient.NewDefaultAlipayClient(
-		alipay_getwayurl,
-		alipay_clientid,
-		alipay_merchantPrivateKey,
-		alipay_alipayPublicKey)
+		alipayGatewayUrl,
+		alipayClientId,
+		alipayMerchantPrivateKey,
+		alipayAlipayPublicKey)
 
 	authConsult(client)
 	//applyToken("281001139639787089651362", client)
-	//queryToken("28288803001291161724296551000BgIrDiWzU0171000529", client)
 	//revokeToken("28288803001291161724296551000BgIrDiWzU0171000529", client)
 }
 
 func authConsult(client *defaultAlipayClient.DefaultAlipayClient) {
 	request, authConsultRequest := auth.NewAlipayAuthConsultRequest()
 	authConsultRequest.AuthRedirectUrl = "https://www.alipay.com"
-	authConsultRequest.AuthState = "123456"
+	authConsultRequest.AuthState = uuid.NewString()
 	authConsultRequest.CustomerBelongsTo = model.ALIPAY_CN
 	authConsultRequest.OsType = model.ANDROID
 	authConsultRequest.OsVersion = "1.0.0"
@@ -40,11 +44,9 @@ func authConsult(client *defaultAlipayClient.DefaultAlipayClient) {
 	response := execute.(*responseAuth.AlipayAuthConsultResponse)
 	fmt.Println("result: ", response.AlipayResponse.Result)
 	fmt.Println("response: ", response)
-
 }
 
 func applyToken(authCode string, client *defaultAlipayClient.DefaultAlipayClient) {
-
 	request, authApplyTokenRequest := auth.NewAlipayAuthApplyTokenRequest()
 	authApplyTokenRequest.GrantType = model.GrantTypeAUTHORIZATION_CODE
 	authApplyTokenRequest.CustomerBelongsTo = model.ALIPAY_CN
@@ -58,21 +60,8 @@ func applyToken(authCode string, client *defaultAlipayClient.DefaultAlipayClient
 	response := execute.(*responseAuth.AlipayAuthApplyTokenResponse)
 	fmt.Println("result: ", response.AlipayResponse.Result)
 	fmt.Println("response: ", response)
-
 }
 
-func queryToken(accessToken string, client *defaultAlipayClient.DefaultAlipayClient) {
-	request, authQueryTokenRequest := auth.NewAlipayAuthQueryTokenRequest()
-	authQueryTokenRequest.AccessToken = accessToken
-	execute, err := client.Execute(request)
-	if err != nil {
-		print(err.Error())
-		return
-	}
-	response := execute.(*responseAuth.AlipayAuthQueryTokenResponse)
-	fmt.Println("result: ", response.AlipayResponse.Result)
-	fmt.Println("response: ", response)
-}
 func revokeToken(accessToken string, client *defaultAlipayClient.DefaultAlipayClient) {
 	request, authRevokeTokenRequest := auth.NewAlipayAuthRevokeTokenRequest()
 	authRevokeTokenRequest.AccessToken = accessToken

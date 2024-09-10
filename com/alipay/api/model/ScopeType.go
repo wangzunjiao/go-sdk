@@ -10,4 +10,5 @@ const (
 	ScopeTypeUserLoginId  ScopeType = "USER_LOGIN_ID"
 	ScopeTypeHashLoginId  ScopeType = "HASH_LOGIN_ID"
 	ScopeTypeSendOtp      ScopeType = "SEND_OTP"
+	ScopeTypeTAOBAOREBIND ScopeType = "TAOBAO_REBIND"
 )

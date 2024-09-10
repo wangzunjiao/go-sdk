@@ -1,16 +1,16 @@
 ```
 Language：GO  
 GO version：1.22.5+  
-Tags：v1.0.0
+Tags：v1.0.1
 Copyright：Ant financial services group  
 ```
 
 #### 1 Please use the latest version
 
-https://mvnrepository.com/artifact/com.alipay.global.sdk/global-open-sdk-go
+https://github.com/wangzunjiao/go-sdk/tags
 
 ```  
- go get github.com/alipay/global-open-sdk-go
+ go get github.com/wangzunjiao/go-sdk
 ```
 
 #### 2 The demo code for create payment
