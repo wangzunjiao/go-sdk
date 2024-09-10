@@ -1,6 +1,6 @@
 package request
 
-import "github.com/wangzunjiao.wzj/go-sdk/com/alipay/api/model"
+import "github.com/wangzunjiao/go-sdk/com/alipay/api/model"
 
 type AlipayRequest struct {
 	Param          any    `json:"param,omitempty"`

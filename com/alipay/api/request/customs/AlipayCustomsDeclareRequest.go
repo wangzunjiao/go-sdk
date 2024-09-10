@@ -1,9 +1,9 @@
 package customs
 
 import (
-	"github.com/wangzunjiao.wzj/go-sdk/com/alipay/api/model"
-	"github.com/wangzunjiao.wzj/go-sdk/com/alipay/api/request"
-	responseCustoms "github.com/wangzunjiao.wzj/go-sdk/com/alipay/api/response/customs"
+	"github.com/wangzunjiao/go-sdk/com/alipay/api/model"
+	"github.com/wangzunjiao/go-sdk/com/alipay/api/request"
+	responseCustoms "github.com/wangzunjiao/go-sdk/com/alipay/api/response/customs"
 )
 
 type AlipayCustomsDeclareRequest struct {

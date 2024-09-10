@@ -1,9 +1,9 @@
 package auth
 
 import (
-	"github.com/wangzunjiao.wzj/go-sdk/com/alipay/api/model"
-	"github.com/wangzunjiao.wzj/go-sdk/com/alipay/api/request"
-	responseAuth "github.com/wangzunjiao.wzj/go-sdk/com/alipay/api/response/auth"
+	"github.com/wangzunjiao/go-sdk/com/alipay/api/model"
+	"github.com/wangzunjiao/go-sdk/com/alipay/api/request"
+	responseAuth "github.com/wangzunjiao/go-sdk/com/alipay/api/response/auth"
 )
 
 type AlipayAuthQueryTokenRequest struct {

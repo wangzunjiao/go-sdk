@@ -1,6 +1,6 @@
 package responseAuth
 
-import "github.com/wangzunjiao.wzj/go-sdk/com/alipay/api/response"
+import "github.com/wangzunjiao/go-sdk/com/alipay/api/response"
 
 type AlipayAuthRevokeTokenResponse struct {
 	response.AlipayResponse
