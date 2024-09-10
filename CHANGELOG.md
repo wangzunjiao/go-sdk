@@ -1,8 +1,10 @@
 # Changelog
 
 ## 1.2.0 - 2024-09-010
-*  update:mod
+*  update:path
 
+## 1.2.0 - 2024-09-010
+*  update:mod
 
 ## 1.0.1 - 2024-09-04
 *  update:ScopeType
