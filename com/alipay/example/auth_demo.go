@@ -21,12 +21,12 @@ func main() {
 		alipayMerchantPrivateKey,
 		alipayAlipayPublicKey)
 
-	authConsult(client)
-	//applyToken("281001139639787089651362", client)
-	//revokeToken("28288803001291161724296551000BgIrDiWzU0171000529", client)
+	AuthConsult(client)
+	//ApplyToken("281001139639787089651362", client)
+	//RevokeToken("28288803001291161724296551000BgIrDiWzU0171000529", client)
 }
 
-func authConsult(client *defaultAlipayClient.DefaultAlipayClient) {
+func AuthConsult(client *defaultAlipayClient.DefaultAlipayClient) {
 	request, authConsultRequest := auth.NewAlipayAuthConsultRequest()
 	authConsultRequest.AuthRedirectUrl = "https://www.alipay.com"
 	authConsultRequest.AuthState = uuid.NewString()
@@ -46,7 +46,7 @@ func authConsult(client *defaultAlipayClient.DefaultAlipayClient) {
 	fmt.Println("response: ", response)
 }
 
-func applyToken(authCode string, client *defaultAlipayClient.DefaultAlipayClient) {
+func ApplyToken(authCode string, client *defaultAlipayClient.DefaultAlipayClient) {
 	request, authApplyTokenRequest := auth.NewAlipayAuthApplyTokenRequest()
 	authApplyTokenRequest.GrantType = model.GrantTypeAUTHORIZATION_CODE
 	authApplyTokenRequest.CustomerBelongsTo = model.ALIPAY_CN
@@ -62,7 +62,7 @@ func applyToken(authCode string, client *defaultAlipayClient.DefaultAlipayClient
 	fmt.Println("response: ", response)
 }
 
-func revokeToken(accessToken string, client *defaultAlipayClient.DefaultAlipayClient) {
+func RevokeToken(accessToken string, client *defaultAlipayClient.DefaultAlipayClient) {
 	request, authRevokeTokenRequest := auth.NewAlipayAuthRevokeTokenRequest()
 	authRevokeTokenRequest.AccessToken = accessToken
 	execute, err := client.Execute(request)

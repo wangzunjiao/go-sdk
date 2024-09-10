@@ -21,16 +21,16 @@ func main() {
 		alipayMerchantPrivateKey,
 		alipayAlipayPublicKey)
 
-	doPay(client)
-	//payQuery("1e6d724d-da95-407b-9802-6f2217c301d6", client)
-	//refund("202408151940108001001886C0209996792", client)
-	//queryRefund("ad53716a-81-4c4c-b151-216c5225e", client)
-	//cancel("ad53716a-81-4c4c-b51-20916c5225e", client)
-	//consult(client)
-	//createSession(client)
+	DoPay(client)
+	//PayQuery("1e6d724d-da95-407b-9802-6f2217c301d6", client)
+	//Refund("202408151940108001001886C0209996792", client)
+	//QueryRefund("ad53716a-81-4c4c-b151-216c5225e", client)
+	//Cancel("ad53716a-81-4c4c-b51-20916c5225e", client)
+	//Consult(client)
+	//CreateSession(client)
 }
 
-func doPay(body *defaultAlipayClient.DefaultAlipayClient) {
+func DoPay(body *defaultAlipayClient.DefaultAlipayClient) {
 	payRequest, request := pay.NewAlipayPayRequest()
 
 	request.PaymentRequestId = uuid.NewString()
@@ -66,7 +66,7 @@ func doPay(body *defaultAlipayClient.DefaultAlipayClient) {
 	fmt.Println("response: ", response)
 }
 
-func payQuery(paymentRequestId string, body *defaultAlipayClient.DefaultAlipayClient) {
+func PayQuery(paymentRequestId string, body *defaultAlipayClient.DefaultAlipayClient) {
 	queryRequest := pay.AlipayPayQueryRequest{}
 	queryRequest.PaymentRequestId = paymentRequestId
 	request := queryRequest.NewRequest()
@@ -81,7 +81,7 @@ func payQuery(paymentRequestId string, body *defaultAlipayClient.DefaultAlipayCl
 	fmt.Println(response)
 }
 
-func refund(paymentId string, client *defaultAlipayClient.DefaultAlipayClient) {
+func Refund(paymentId string, client *defaultAlipayClient.DefaultAlipayClient) {
 	refundRequest := pay.AlipayRefundRequest{}
 	refundRequest.RefundRequestId = uuid.NewString()
 	refundRequest.PaymentId = paymentId
@@ -99,7 +99,7 @@ func refund(paymentId string, client *defaultAlipayClient.DefaultAlipayClient) {
 
 }
 
-func queryRefund(refundRequestId string, client *defaultAlipayClient.DefaultAlipayClient) {
+func QueryRefund(refundRequestId string, client *defaultAlipayClient.DefaultAlipayClient) {
 	queryRefundRequest := pay.AlipayInquiryRefundRequest{}
 	queryRefundRequest.RefundRequestId = refundRequestId
 	request := queryRefundRequest.NewRequest()
@@ -113,7 +113,7 @@ func queryRefund(refundRequestId string, client *defaultAlipayClient.DefaultAlip
 	fmt.Println(response)
 }
 
-func consult(client *defaultAlipayClient.DefaultAlipayClient) {
+func Consult(client *defaultAlipayClient.DefaultAlipayClient) {
 	consultRequest := &pay.AlipayPayConsultRequest{}
 	request := consultRequest.NewRequest()
 	consultRequest.SettlementStrategy = &model.SettlementStrategy{
@@ -142,7 +142,7 @@ func consult(client *defaultAlipayClient.DefaultAlipayClient) {
 
 }
 
-func cancel(paymentRequestId string, client *defaultAlipayClient.DefaultAlipayClient) {
+func Cancel(paymentRequestId string, client *defaultAlipayClient.DefaultAlipayClient) {
 	request, cancelRequest := pay.NewAlipayPayCancelRequest()
 	cancelRequest.PaymentRequestId = paymentRequestId
 	execute, err := client.Execute(request)
@@ -156,7 +156,7 @@ func cancel(paymentRequestId string, client *defaultAlipayClient.DefaultAlipayCl
 
 }
 
-func createSession(client *defaultAlipayClient.DefaultAlipayClient) {
+func CreateSession(client *defaultAlipayClient.DefaultAlipayClient) {
 	request, createSessionRequest := pay.NewAlipayPaymentSessionRequest()
 	createSessionRequest.PaymentRequestId = uuid.NewString()
 	createSessionRequest.Order = &model.Order{

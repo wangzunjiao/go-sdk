@@ -20,12 +20,12 @@ func main() {
 		alipayClientId,
 		alipayMerchantPrivateKey,
 		alipayAlipayPublicKey)
-	declare("202408221940108001001887E0207467163", client)
-	//inquiryDeclaration([]string{""}, client)
+	Declare("202408221940108001001887E0207467163", client)
+	//InquiryDeclaration([]string{""}, client)
 
 }
 
-func declare(paymentId string, client *defaultAlipayClient.DefaultAlipayClient) {
+func Declare(paymentId string, client *defaultAlipayClient.DefaultAlipayClient) {
 	request, customsDeclareRequest := customs.NewAlipayCustomsDeclareRequest()
 	customsDeclareRequest.PaymentId = paymentId
 	customsDeclareRequest.DeclarationRequestId = uuid.NewString()
@@ -59,7 +59,7 @@ func declare(paymentId string, client *defaultAlipayClient.DefaultAlipayClient) 
 
 }
 
-func inquiryDeclaration(declareRequestId []string, client *defaultAlipayClient.DefaultAlipayClient) {
+func InquiryDeclaration(declareRequestId []string, client *defaultAlipayClient.DefaultAlipayClient) {
 	request, customsQueryRequest := customs.NewAlipayCustomsQueryRequest()
 	customsQueryRequest.DeclarationRequestIds = declareRequestId
 	execute, err := client.Execute(request)
